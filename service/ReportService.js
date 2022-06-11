@@ -4,7 +4,7 @@ import PDFRenderingService from './PDFRenderingService.js';
 class ReportService{
 
     async createReport(data, templateName){
-        const htmlContent = await ReportRenderingService.renderHTMLReport(data);
+        const htmlContent = await ReportRenderingService.renderHTMLReport(data, templateName);
         console.log(htmlContent);
         const pdfdata = await PDFRenderingService.renderReport(htmlContent);
         return pdfdata;

@@ -1,16 +1,20 @@
 import ejs from 'ejs'
 import path from 'path';
-const __dirname = path.resolve();
 
 
 class ReportRenderingService{
 
-    static async renderHTMLReport(templatePath){
+    static async renderHTMLReport(data, templatePath){
         const options = {};
-        const absolutePath = path.join(__dirname, "../templates/", templatePath);
+        console.log("path 1");
+        console.log(path.resolve());
+        console.log("path 2");
+        const dir = path.resolve();
+        console.log("path 2" + dir);
+        const absolutePath = path.join(dir, "/templates/", templatePath);
         
         return new Promise((resolve, reject) => {
-            ejs.renderFile(absolutePath, options, (error, data) => {
+            ejs.renderFile(absolutePath, data, options, (error, data) => {
                 if(error){
                     reject("Unable to render the html content"); 
                 }
