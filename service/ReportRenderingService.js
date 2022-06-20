@@ -1,16 +1,13 @@
 import ejs from 'ejs'
 import path from 'path';
-
+import ImageToBase64 from './ImageToBse64Converter.js';
 
 class ReportRenderingService{
 
     static async renderHTMLReport(data, templatePath){
         const options = {};
-        console.log("path 1");
-        console.log(path.resolve());
-        console.log("path 2");
         const dir = path.resolve();
-        console.log("path 2" + dir);
+        data.image = ImageToBase64.convert(dir+"/image/logo.png")
         const absolutePath = path.join(dir, "/templates/", templatePath);
         
         return new Promise((resolve, reject) => {
